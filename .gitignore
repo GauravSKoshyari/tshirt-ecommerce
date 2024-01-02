@@ -1,0 +1,5 @@
+compressed_images/
+testback/
+testfront/
+**/node_modules/
+**/.env/
