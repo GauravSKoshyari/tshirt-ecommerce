@@ -1,14 +1,17 @@
 var braintree = require("braintree");
 
+// everything is from braintree docs 
+
+// signup to braintree sandbox - https://sandbox.braintreegateway.com/login
 var gateway = braintree.connect({
   environment: braintree.Environment.Sandbox,
-  merchantId: "48fx4jnkmfsk6g33",
-  publicKey: "kp78pnvbvb9d5x3p",
-  privateKey: "c9e3ff083dffa6f61a464910e8b18baa"
+  merchantId: "dhr583zkprvdk9hx",
+  publicKey: "446443fw9k9rz2fd",
+  privateKey: "82db9cc57d34b849bcb5f8fd9e08959e"
 });
 
 exports.getToken = (req, res) => {
-  gateway.clientToken.generate({}, function(err, response) {
+  gateway.clientToken.generate({}, function (err, response) {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -30,7 +33,7 @@ exports.processPayment = (req, res) => {
         submitForSettlement: true
       }
     },
-    function(err, result) {
+    function (err, result) {
       if (err) {
         res.status(500).json(error);
       } else {

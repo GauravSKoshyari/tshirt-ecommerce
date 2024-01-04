@@ -7,7 +7,7 @@ const Card = ({
   product,
   addtoCart = true,
   removeFromCart = false,
-  setReload = f => f,
+  setReload = f => f,       // i think this is just useless default value
   //   function(f){return f}
   reload = undefined
 }) => {
@@ -47,6 +47,7 @@ const Card = ({
           onClick={() => {
             removeItemFromCart(product._id);
             setReload(!reload);
+            // when we click on this button , there should be a change in Cart page , that's why 'reload' state is in Cart page and here we are just changing it ; true to false , false to true , doesn't matter what value is , they just need to be changed 
           }}
           className="btn btn-block btn-outline-danger mt-2 mb-2"
         >

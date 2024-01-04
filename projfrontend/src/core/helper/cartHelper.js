@@ -39,11 +39,15 @@ export const removeItemFromCart = productId => {
   return cart;
 };
 
+
+// when payment is successful , we will make cart empty
 export const cartEmpty = next => {
   if (typeof window !== undefined) {
     localStorage.removeItem("cart");
     let cart = [];
     localStorage.setItem("cart", JSON.stringify(cart));
+    // we are storing empty cart , otherwise if there is no cart in localStorage , we would face some error 
+
     next();
   }
 };

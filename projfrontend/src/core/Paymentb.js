@@ -6,12 +6,13 @@ import { createOrder } from "./helper/orderHelper";
 import { isAutheticated } from "../auth/helper";
 
 import DropIn from "braintree-web-drop-in-react";
+// https://www.npmjs.com/package/braintree-web-drop-in-react
 
 const Paymentb = ({ products, setReload = f => f, reload = undefined }) => {
   const [info, setInfo] = useState({
     loading: false,
     success: false,
-    clientToken: null,
+    clientToken: null,        //  u can see in doc(above link) , that clientToken: null
     error: "",
     instance: {}
   });
@@ -78,7 +79,7 @@ const Paymentb = ({ products, setReload = f => f, reload = undefined }) => {
             console.log("Did we got a crash?");
           });
 
-          setReload(!reload);
+          setReload(!reload);     // reload cart 
         })
         .catch(error => {
           setInfo({ loading: false, success: false });
@@ -86,6 +87,10 @@ const Paymentb = ({ products, setReload = f => f, reload = undefined }) => {
         });
     });
   };
+
+  // check this for test cards 
+  // https://developer.paypal.com/braintree/docs/guides/credit-cards/testing-go-live/php
+
 
   const getAmount = () => {
     let amount = 0;

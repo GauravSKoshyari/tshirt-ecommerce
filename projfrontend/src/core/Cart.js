@@ -5,10 +5,11 @@ import Base from "./Base";
 import Card from "./Card";
 import { loadCart } from "./helper/cartHelper";
 import Paymentb from "./Paymentb";
+import StripeCheckout from "./StripeCheckout";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
-  const [reload, setReload] = useState(false);
+  const [reload, setReload] = useState(false);  // when we will remove a product from cart , this state variable will help in reloading cart page 
 
   useEffect(() => {
     setProducts(loadCart());
@@ -49,8 +50,10 @@ const Cart = () => {
             <h4>No products</h4>
           )}
         </div>
+
         <div className="col-6">
           <Paymentb products={products} setReload={setReload} />
+          {/* <StripeCheckout products={products} setReload={setReload} /> */}
         </div>
       </div>
     </Base>

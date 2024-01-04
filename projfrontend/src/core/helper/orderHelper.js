@@ -9,6 +9,7 @@ export const createOrder = (userId, token, orderData) => {
       Authorization: `Bearer ${token}`
     },
     body: JSON.stringify({ order: orderData })
+    // we were using req.body.order in backend
   })
     .then(reponse => {
       return reponse.json();
